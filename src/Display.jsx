@@ -1,21 +1,16 @@
+import { useSelector } from "react-redux";
 import Card from "./components/Card";
-import Data from "./data/db.json";
-import { useState } from "react";
 
 const Display = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 12;
+  const allBooks = useSelector((store) => store.books);
+  const currentPage = useSelector((store) => store.currentPage);
+  const recordsPerPage = useSelector((store) => store.recordsPerPage);
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = Data.books.slice(firstIndex, lastIndex);
-  const nPage = Math.ceil(Data.books.length / recordsPerPage);
-  const numbers = [...Array(nPage + 1).keys()].slice(1);
-  const changePage = (n) => {
-    setCurrentPage(n);
-  };
+  const records = allBooks.slice(firstIndex, lastIndex);
   return (
-    <div className="container">
-      <div className="grid gap-5 px-6 sm:grid-cols-1 md:grid-cols-3">
+    <div className="container min-h-screen">
+      <div className="grid gap-5 px-6 mt-24 sm:grid-cols-1 md:grid-cols-3">
         {records.map((book) => (
           <Card
             key={book.id}
@@ -25,19 +20,6 @@ const Display = () => {
             publishedAt={book.publishedAt}
             fileSize={book.fileSize}
             downloadLink={book.details.downloadLink}
-          />
-        ))}
-      </div>
-
-      <div className="flex justify-center mt-5 join">
-        {numbers.map((n, i) => (
-          <input
-            className="join-item btn btn-sm btn-square"
-            type="radio"
-            name="options"
-            aria-label={n}
-            key={i}
-            onClick={() => changePage(n)}
           />
         ))}
       </div>
