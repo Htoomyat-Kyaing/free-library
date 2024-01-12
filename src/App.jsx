@@ -1,13 +1,21 @@
-import Display from "./Display";
-import Navigation from "./components/Navigation";
-import Pagination from "./components/Pagination";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/root";
+import ErrorPage from "./routes/error-page";
+import DetailsPage from "./routes/detail-page";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/books/:bookId",
+    element: <DetailsPage />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 export default function App() {
-  return (
-    <div className="flex flex-col items-center w-full min-w-full min-h-screen gap-5 mb-5">
-      <Navigation />
-      <Display />
-      <Pagination />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }

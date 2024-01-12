@@ -1,5 +1,9 @@
 import Data from "../data/db.json";
-import { FILTERED_BY_CATEGORY, SET_CURRENT_PAGE } from "./types";
+import {
+  FILTERED_BY_CATEGORY,
+  SEARCHED_BY_NAME,
+  SET_CURRENT_PAGE,
+} from "./types";
 
 const initialState = {
   books: Data.books,
@@ -20,6 +24,13 @@ const booksReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload,
+      };
+    case SEARCHED_BY_NAME:
+      return {
+        ...state,
+        books: Data.books.filter((book) =>
+          book.title.toLowerCase().includes(action.payload.toLowerCase())
+        ),
       };
     default:
       return state;

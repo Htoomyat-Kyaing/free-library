@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 import { setCurrentPage } from "../redux/actions";
 
 const Pagination = () => {
@@ -8,23 +9,23 @@ const Pagination = () => {
   const dispatch = useDispatch();
 
   const nPage = Math.ceil(allBooks.length / recordsPerPage);
-  const numbers = [...Array(nPage + 1).keys()].slice(1);
+  // const numbers = [...Array(nPage + 1).keys()].slice(1);
   const changePage = (pageNum) => {
     dispatch(setCurrentPage(pageNum));
   };
   return (
-    <div className="flex justify-center mt-5 join">
-      {numbers.map((n, i) => (
-        <input
-          className="join-item btn btn-sm btn-square"
-          type="radio"
-          name="options"
-          aria-label={n}
-          key={i}
-          onClick={() => changePage(n)}
-        />
-      ))}
-    </div>
+    <ReactPaginate
+      breakLabel={<div className="join-item btn">...</div>}
+      nextLabel={<div className="join-item btn">{`>`}</div>}
+      onPageChange={(e) => changePage(e.selected + 1)}
+      pageRangeDisplayed={3}
+      pageCount={nPage}
+      previousLabel={<div className="join-item btn">{`<`}</div>}
+      renderOnZeroPageCount={null}
+      containerClassName="flex justify-center mt-5 gap-2 join"
+      pageLinkClassName="join-item btn"
+      activeClassName="btn-primary"
+    />
   );
 };
 

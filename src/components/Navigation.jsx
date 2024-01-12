@@ -1,15 +1,11 @@
 import Data from "../data/db.json";
 import { useDispatch } from "react-redux";
-import { filteredByCategory } from "../redux/actions";
-import { useEffect } from "react";
+import { filteredByCategory, searchedByName } from "../redux/actions";
+import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 import { FaRegSun, FaRegMoon } from "react-icons/fa";
 
 const Navigation = () => {
-  useEffect(() => {
-    localStorage.theme = "dark";
-    themeChange(false);
-  }, []);
   let uniqueTags = [];
   const dispatch = useDispatch();
   Data.books.map((book) =>
@@ -22,11 +18,18 @@ const Navigation = () => {
     dispatch(filteredByCategory(tag));
   };
 
+  const [bookName, setBookName] = useState("");
+
+  useEffect(() => {
+    localStorage.theme = "dark";
+    themeChange(false);
+  }, []);
+
   return (
     <div className="container">
       <div className="fixed top-0 z-10 py-5 shadow-2xl navbar bg-base-100 shadow-zinc-800">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown sm:hidden">
             <div
               tabIndex={0}
               role="button"
@@ -58,16 +61,25 @@ const Navigation = () => {
               ))}
             </ul>
           </div>
-          <a className="text-xl btn btn-ghost">daisyUI</a>
+          <a href="/" className="text-xl btn btn-ghost">
+            Logo
+          </a>
         </div>
-        <div className="navbar-center">
+        <div className="flex gap-5 navbar-center">
           <input
             type="text"
-            className="py-2 bg-blue-200 rounded-full indent-3 "
-            placeholder="🔎"
+            placeholder="Search"
+            className="w-40 max-w-x md:w-64 input input-bordered input-primary"
+            onChange={(e) => setBookName(e.target.value)}
           />
+          <button
+            className="btn btn-primary btn-circle"
+            onClick={() => dispatch(searchedByName(bookName))}
+          >
+            🔎
+          </button>
         </div>
-        <div className="navbar-end">
+        <div className="pr-3 navbar-end">
           <FaRegSun className="text-orange-300" />
           <label className="cursor-pointer label">
             <input
