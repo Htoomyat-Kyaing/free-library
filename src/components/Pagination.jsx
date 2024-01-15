@@ -14,18 +14,20 @@ const Pagination = () => {
     dispatch(setCurrentPage(pageNum));
   };
   return (
-    <ReactPaginate
-      breakLabel={<div className="join-item btn">...</div>}
-      nextLabel={<div className="join-item btn">{`>`}</div>}
-      onPageChange={(e) => changePage(e.selected + 1)}
-      pageRangeDisplayed={3}
-      pageCount={nPage}
-      previousLabel={<div className="join-item btn">{`<`}</div>}
-      renderOnZeroPageCount={null}
-      containerClassName="flex justify-center mt-5 gap-2 join"
-      pageLinkClassName="join-item btn"
-      activeClassName="btn-primary"
-    />
+    <div className="w-full">
+      <ReactPaginate
+        breakLabel={<div className="join-item btn btn-sm">...</div>}
+        nextLabel={<div className="join-item btn btn-sm">{`>`}</div>}
+        onPageChange={(e) => changePage(e.selected + 1)}
+        pageRangeDisplayed={3}
+        pageCount={nPage}
+        previousLabel={<div className="join-item btn btn-sm">{`<`}</div>}
+        renderOnZeroPageCount={null}
+        containerClassName="flex justify-center join flex-wrap"
+        pageLinkClassName="join-item btn btn-sm"
+        activeLinkClassName="bg-violet-600 text-white hover:bg-violet-500"
+      />
+    </div>
   );
 };
 

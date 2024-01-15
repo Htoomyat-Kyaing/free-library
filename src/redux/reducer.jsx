@@ -1,6 +1,8 @@
 import Data from "../data/db.json";
 import {
   FILTERED_BY_CATEGORY,
+  LOG_OUT,
+  LOG_IN,
   SEARCHED_BY_NAME,
   SET_CURRENT_PAGE,
 } from "./types";
@@ -8,7 +10,8 @@ import {
 const initialState = {
   books: Data.books,
   currentPage: 1,
-  recordsPerPage: 12,
+  recordsPerPage: 15,
+  login: false,
 };
 
 const booksReducer = (state = initialState, action) => {
@@ -31,6 +34,16 @@ const booksReducer = (state = initialState, action) => {
         books: Data.books.filter((book) =>
           book.title.toLowerCase().includes(action.payload.toLowerCase())
         ),
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        login: false,
+      };
+    case LOG_IN:
+      return {
+        ...state,
+        login: true,
       };
     default:
       return state;

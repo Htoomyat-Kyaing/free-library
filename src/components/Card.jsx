@@ -14,7 +14,7 @@ const Card = ({ title, pageCount, publishedAt, fileSize, image, id, tags }) => {
         tags: tags,
       }}
     >
-      <div className="flex items-center h-full gap-5 p-5 rounded-lg shadow-xl min-h-40 md:flex-col">
+      <div className="flex items-center h-full gap-5 p-5 rounded-lg shadow-xl min-h-40 md:flex-col hover:bg-violet-600">
         <figure className="flex min-w-max">
           <img className="w-20 h-24 md:w-40 md:h-44 object-fit" src={image} />
         </figure>

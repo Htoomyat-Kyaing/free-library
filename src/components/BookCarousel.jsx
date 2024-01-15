@@ -8,9 +8,9 @@ const BookCarousel = ({ featuredBooks }) => {
       {featuredBooks && (
         <Carousel
           className="w-3/4"
-          autoPlay={true}
           autoFocus={true}
-          centerMode
+          autoPlay={true}
+          centerMode={true}
           centerSlidePercentage={30}
           showArrows={true}
           showStatus={false}
@@ -19,7 +19,6 @@ const BookCarousel = ({ featuredBooks }) => {
           infiniteLoop={true}
           interval={2000}
           transitionTime={500}
-          swipeable={true}
         >
           {featuredBooks.map((book) => (
             <Link
@@ -37,7 +36,6 @@ const BookCarousel = ({ featuredBooks }) => {
             >
               <div className="mx-3">
                 <img className="object-fill" src={book.image} />
-                <span className="legend">{book.title}</span>
               </div>
             </Link>
           ))}

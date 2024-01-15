@@ -1,6 +1,7 @@
 import Data from "../data/db.json";
 import { useDispatch } from "react-redux";
 import { filteredByCategory } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   let uniqueTags = [];
@@ -16,17 +17,23 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="hidden min-h-full border rounded-lg border-primary w-fit sm:block">
+    <div className="hidden h-full rounded-lg min-w-fit max-h-fit sm:block">
       <ul
         tabIndex={0}
-        className="flex flex-col justify-between h-full overflow-hidden divide-y w-52 divide-primary"
+        className="flex flex-col justify-between h-full gap-2 overflow-hidden w-fit"
       >
         {uniqueTags.map((tag, i) => (
           <li
-            className="flex items-center w-full h-full py-2 pl-5 cursor-pointer border-b-primary"
+            className="flex items-center w-full h-full border rounded-lg cursor-pointer hover:bg-violet-600 border-violet-600"
             key={i}
           >
-            <a onClick={() => filterByTags(tag)}>{tag}</a>
+            <Link
+              to={"/"}
+              onClick={() => filterByTags(tag)}
+              className="w-full h-full py-2 pl-5"
+            >
+              {tag}
+            </Link>
           </li>
         ))}
       </ul>

@@ -28,8 +28,8 @@ export default function DetailsPage() {
   console.log(state);
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-base-200">
-      <div className="flex flex-col w-3/4 hero-content lg:flex-row-reverse">
+    <div className="flex flex-col items-center">
+      <div className="flex flex-col w-3/4 pt-24 hero-content lg:flex-row-reverse">
         <img
           src={state.image}
           className="object-contain w-full rounded-lg shadow-2xl max-w-40"
@@ -39,21 +39,23 @@ export default function DetailsPage() {
           <p className="py-6">
             {state.pageCount} | {state.publishedAt} | {state.fileSize}
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 ">
             {state?.tags?.map((tag) => (
               <span
                 key={tag}
                 onClick={() => {
                   handleClick(tag);
                 }}
-                className="text-primary hover:cursor-pointer"
+                className="text-violet-600 hover:cursor-pointer hover:text-violet-500"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <button className="mt-5 btn btn-primary">Download</button>
+          <button className="mt-5 text-white btn hover:bg-violet-500 bg-violet-600">
+            Download
+          </button>
         </div>
       </div>
       <div className="flex flex-col items-center w-full mb-6">
