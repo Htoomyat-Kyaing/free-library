@@ -25,7 +25,7 @@ export default function DetailsPage() {
 
   useEffect(() => {}, [featuredBooks]);
 
-  console.log(state);
+  // console.log(state);
 
   return (
     <div className="flex flex-col items-center">
