@@ -1,6 +1,6 @@
 import Data from "../data/db.json";
 import { useDispatch } from "react-redux";
-import { filteredByCategory } from "../redux/actions";
+import { filteredByCategory, setCurrentPage } from "../redux/actions";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -14,6 +14,7 @@ const Sidebar = () => {
 
   const filterByTags = (tag) => {
     dispatch(filteredByCategory(tag));
+    dispatch(setCurrentPage(1));
   };
 
   return (
@@ -30,7 +31,7 @@ const Sidebar = () => {
             <Link
               to={"/"}
               onClick={() => filterByTags(tag)}
-              className="w-full h-full py-2 pl-5"
+              className="w-full h-full px-5 py-2"
             >
               {tag}
             </Link>

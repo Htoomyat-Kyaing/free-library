@@ -6,13 +6,13 @@ import Sidebar from "../components/Sidebar";
 
 export default function Root() {
   return (
-    <div className="flex flex-col w-full h-auto gap-5 pb-5 max-h-fit">
+    <div className="flex flex-col min-w-full min-h-screen pb-5">
       <Navigation />
-      <div className="flex max-w-full gap-5 px-6 mt-24 min-h-fit">
+      <div className="flex gap-5 px-6 mt-24">
         <Sidebar />
         <Outlet />
       </div>
-      <div className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full mt-5">
         <Pagination />
       </div>
     </div>

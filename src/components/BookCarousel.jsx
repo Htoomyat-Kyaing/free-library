@@ -7,11 +7,11 @@ const BookCarousel = ({ featuredBooks }) => {
     <>
       {featuredBooks && (
         <Carousel
-          className="w-3/4"
+          className=""
           autoFocus={true}
           autoPlay={true}
           centerMode={true}
-          centerSlidePercentage={30}
+          centerSlidePercentage={20}
           showArrows={true}
           showStatus={false}
           showIndicators={false}
@@ -34,7 +34,7 @@ const BookCarousel = ({ featuredBooks }) => {
               }}
               key={book.id}
             >
-              <div className="mx-3">
+              <div className="mr-3">
                 <img className="object-fill" src={book.image} />
               </div>
             </Link>

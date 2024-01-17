@@ -28,18 +28,20 @@ export default function DetailsPage() {
   // console.log(state);
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-col w-3/4 pt-24 hero-content lg:flex-row-reverse">
+    <div className="w-full">
+      <div className="w-full">
         <img
           src={state.image}
           className="object-contain w-full rounded-lg shadow-2xl max-w-40"
         />
+        <h1 className="mt-5 text-2xl font-bold md:text-5xl text-wrap">
+          {state.title}
+        </h1>
+        <p className="py-6">
+          {state.pageCount} | {state.publishedAt} | {state.fileSize}
+        </p>
         <div>
-          <h1 className="text-5xl font-bold">{state.title}</h1>
-          <p className="py-6">
-            {state.pageCount} | {state.publishedAt} | {state.fileSize}
-          </p>
-          <div className="flex gap-3 ">
+          <div className="flex gap-3">
             {state?.tags?.map((tag) => (
               <span
                 key={tag}
@@ -57,10 +59,11 @@ export default function DetailsPage() {
             Download
           </button>
         </div>
-      </div>
-      <div className="flex flex-col items-center w-full mb-6">
-        <h2 className="mb-5 text-xl font-semibold">Featured Books</h2>
-        <BookCarousel featuredBooks={featuredBooks} />
+
+        <div className="w-full mt-5">
+          <h2 className="mb-5 text-xl font-semibold">Featured Books</h2>
+          <BookCarousel featuredBooks={featuredBooks} />
+        </div>
       </div>
     </div>
   );

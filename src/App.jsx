@@ -27,7 +27,8 @@ export default function App() {
   // return <RouterProvider router={router} />;
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/login");
+    if (isLogin) navigate("/");
+    else navigate("/login");
     // console.log(isLogin);
   }, []);
   return (

@@ -11,7 +11,7 @@ const initialState = {
   books: Data.books,
   currentPage: 1,
   recordsPerPage: 15,
-  login: false,
+  login: true,
 };
 
 const booksReducer = (state = initialState, action) => {
