@@ -14,5 +14,7 @@ describe("Login", () => {
         </MemoryRouter>
       </Provider>
     );
+    const errorMsg = screen.queryByTestId("errorMsg");
+    expect(errorMsg).toEqual(null);
   });
 });

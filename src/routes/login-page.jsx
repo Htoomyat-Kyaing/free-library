@@ -63,7 +63,7 @@ const LoginPage = () => {
                 required
               />
               {isUser === false && (
-                <label className=" label">
+                <label data-testid="errorMsg" className="label">
                   <p className="text-red-500 label-text-alt">
                     Wrong email or password. Please try again.
                   </p>
